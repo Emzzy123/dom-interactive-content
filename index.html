@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Tester</title>
+  </head>
+  <body>
+    <div class="output"></div>
+    <script>
+      const output = document.querySelector(".output");
+      output.textContent = "hello world";
+      output.style.height = "200px";
+      output.style.width = "400px";
+      output.style.backgroundColor = "red";
+      output.addEventListener("mousedown", function (e) {
+        message("green", e);
+      });
+      output.addEventListener("mouseover", function (e) {
+        message("red", e);
+      });
+      output.addEventListener("mouseout", function (e) {
+        message("yellow", e);
+      });
+      output.addEventListener("mouseup", function (e) {
+        message("blue", e);
+      });
+      function message(elColor, event) {
+        console.log(event.type);
+        output.style.backgroundColor = elColor;
+      }
+
+      let darkMode = false;
+      window.onclick = () => {
+        console.log(darkMode);
+        if (!darkMode) {
+          document.body.style.backgroundColor = "black";
+          document.body.style.color = "white";
+          document.body.style.fontSize = "40px";
+          darkMode = true;
+        } else {
+          document.body.style.backgroundColor = "white";
+          document.body.style.color = "black";
+          document.body.style.fontSize = "20px";
+          darkMode = false;
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", (e) => {
+        message("Document ready", e);
+      });
+      window.onload = (e) => {
+        message("window ready", e);
+      };
+
+      function message(val, event) {
+        console.log(event);
+        console.log(val);
+      }
+    </script>
+  </body>
+</html>
